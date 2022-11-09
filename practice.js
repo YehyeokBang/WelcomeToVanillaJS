@@ -100,3 +100,48 @@ console.log(player.grade);
 console.log(player);
 player.money = 300;
 console.log(player);
+
+/* function, 특별한 목적의 작업을 수행하도록 설계된 독립적인 블록
+   필요할 때마다 호출하여 해당 작업을 반복해서 수행할 수 있음
+   인사하는 함수를 호출하는 코드 */
+function sayHello() {
+  console.log("Hello! My name is Yehyeok");
+}
+sayHello();
+
+/* 어떤 함수를 호출할 때 괄호안에 어떤 값 or 변수를 쓰면 그것을 인자라고 함
+   함수에서 매개변수를 적어둔 상태라면, 호출 시 인자로 전달한 값을 매개변수를
+   통해 함수 안에서 사용 가능해짐
+   "Yehyeok"를 인자(argument), 함수 괄호안에 써둔 name이 매개변수 */
+function sayHi(name) {
+  console.log("Hello! My name is " + name);
+}
+sayHi("Yehyeok");
+sayHi("IronMan");
+
+/* 매개변수는 여러 개 만들 수 있음
+   매개변수의 이름은 겹치지만 않으면 아무거나 상관없다. 오로지 전달하는
+   순서에 따라 인자가 전달됨 (h, g)가 매개변수지만 호출할 때 (g, h)로 인자를
+   넘겨주면 매개변수 h에는 g 인자값이 넘어가고 매개변수 g에는 h값이 들어감
+   10 나누기 2 = 5가 출력됨 */
+function divide(h, g) {
+  console.log(h / g);
+}
+const g = 10;
+const h = 2;
+divide(g, h);
+
+/* student.함수() 형태로 사용 가능
+   만든 오브젝트가 상대방의 이름만 받으면 누구한테나 인사할 수 있게 됨*/
+const student = {
+  name: "Yehyeok",
+  sayHello: function (otherName) {
+    console.log("Hello! " + otherName + " nice to meet you");
+  },
+};
+console.log(student.name);
+student.sayHello("IronMan");
+
+/* 만약 인자를 매개변수보다 많이 넘겨주더라도 함수는 순서대로 첫 번째, 한 개만
+   알아듣고 실행함 그리고 매개변수인 otherName은 {}로 둘러쌓인 바디에서만 접근 가능*/
+student.sayHello("IronMan", "SpiderMan", "Hulk");
