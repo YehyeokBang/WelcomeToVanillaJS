@@ -145,3 +145,103 @@ student.sayHello("IronMan");
 /* 만약 인자를 매개변수보다 많이 넘겨주더라도 함수는 순서대로 첫 번째, 한 개만
    알아듣고 실행함 그리고 매개변수인 otherName은 {}로 둘러쌓인 바디에서만 접근 가능*/
 student.sayHello("IronMan", "SpiderMan", "Hulk");
+
+/* return을 이용하면 함수의 결과를 외부에서 사용할 수 있음
+   plusOne()에 i(1)를 넘겨주고 매개변수가 i의 값을 받아 num + 1이 계산된 값이
+   return을 통해 결과를 외부에서 받아서 사용 가능 
+   (예시: plusOne(1)의 값을 다른 변수에 저장해서 연산이나 출력에 사용) */
+const i = 1;
+function plusOne(num) {
+  return num + 1;
+}
+const j = plusOne(i);
+console.log(j);
+console.log(j + 3);
+
+/* calculator 예제를 통해 머릿속에서 값을 바꿔가며 흐름을 이해하보기 */
+const calculator = {
+  plus: function (a, b) {
+    return a + b;
+    console.log("hello");
+    /* 이와 같이 함수 실행 중 return을 만나면 값을 반환하며 종료함
+       그렇기에 이 문장(console.log())은 실행되지 않음 */
+  },
+  minus: function (a, b) {
+    return a - b;
+  },
+  times: function (a, b) {
+    return a * b;
+  },
+  divide: function (a, b) {
+    return a / b;
+  },
+  power: function (a, b) {
+    return a ** b;
+  },
+};
+
+/* 변수 5가지는 함수의 리턴 값의 타입을 갖게 됨 (숫자 타입)
+   plusResult: 5, minusResult: -5, timesResult: -50,
+   divideResult: -10, powerResult: -100000 */
+const plusResult = calculator.plus(2, 3);
+const minusResult = calculator.minus(plusResult, 10);
+const timesResult = calculator.times(10, minusResult);
+const divideResult = calculator.divide(timesResult, plusResult);
+const powerResult = calculator.power(divideResult, plusResult);
+
+/* prompt()는 사용자에게 창을 띄우고 값을 받기를 기다림,
+   창에서 값을 받거나 취소하지 않으면 다음 문장이 실행되지 않음
+   이 방법은 아주 오래된 방법, css도 사용 불가 => 잘 안씀 */
+const prmt = prompt("How old ary you?");
+console.log("Ok!");
+
+/* typeof()를 이용하면 type을 볼 수 있음 prompt()에 숫자를
+   입력해도 string으로 나옴, 그 이유는 string이 디폴트이기 때문
+   따라서 다른 타입으로 변환해주는 작업을 해야함
+   string에서 number로 변환해주는 함수: parseInt()
+   만약 숫자가 아닌 값이 입력되면 변환 안됨(NaN) */
+console.log(typeof prmt);
+const userAge = parseInt(prompt("How old are you?"));
+console.log(userAge);
+
+/* if, else 문 쉽게 말해 if는 어떠한 값이 true이면 그 블록 안에
+   문장이 실행되고 아닐 경우 else 블록에 있는 문장이 실행 됨
+   if만 써도 됨, else는 선택사항임
+   isNaN()은 넘겨준 인자가 NaN일 경우 true를 리턴
+   따라서 입력받은 userAge가 NaN이면 Please~가 실행 */
+if (isNaN(userAge)) {
+  console.log("Please write a number.");
+} else {
+  console.log("Thank you for writing your age.");
+}
+
+/* else if문은 하나의 condition을 더 추가한다고 생각하면 됨
+   number형으로 userAge를 받았는데 이때 음주가 가능한지 체크
+   18세 미만이라면 아직 어리다는 문장이 나오고 18세 이상이라면
+   음주가 가능하다는 문장이 실행됨 
+   &&, || 등 AND, OR 등 여러 조건을 사용할 수 있음 */
+if (isNaN(userAge)) {
+  console.log("Please write a number.");
+} else if (userAge < 18 && true) {
+  console.log("You art too young.");
+} else {
+  console.log("You can drink.");
+}
+
+/* Conditionals Recap
+   prompt를 이용해 점수를 입력 받는 과정에서 prompt로 받아온
+   값의 디폴트 값은 string이기 때문에 parseInt를 통해 숫자로
+   변환, 그 후 if문을 이용해 적절한 결과를 출력함 */
+const myScore = parseInt(prompt("What is your score"));
+
+if (isNaN(myScore)) {
+  console.log("Please write a number!"); // NaN인 경우
+} else if (myScore < 50) {
+  console.log("Your grade is C");
+} else if (myScore >= 50 && myScore < 70) {
+  console.log("Your grade is B");
+} else if (myScore >= 70 && myScore < 90) {
+  console.log("Your grade is A");
+} else {
+  console.log("Your grade is A+");
+}
