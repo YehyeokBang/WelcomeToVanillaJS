@@ -245,3 +245,33 @@ if (isNaN(myScore)) {
 } else {
   console.log("Your grade is A+");
 }
+
+/* document, 브라우저에 존재하는 object
+   이 document 객체로 아주 쉽게 HTML에 접근할 수 있음
+   HTML에서의 title 속성이 무엇이던 간에 js에서 접근해서 변경하면
+   title 값이 변경됨, 두 가지 일을 할 수 있게 됨
+   |document에서 항목들을 가져오는 일, 이 document 항목들을 변경하는 일| */
+document.title = "Hello! From Js!";
+
+/* console.dir(객체)을 이용하면 객체의 데이터를 자세히 볼 수 있음 */
+console.dir(document);
+
+/* getElementById, id가 title인 HTML 태그를 통채로 가져올 수 있음
+   콘솔창에 직접 타이핑해보면 쉽게 볼 수 있음 */
+document.getElementById("title");
+
+/* getElementByClassName, HTML에 class를 설정해두고 사용 가능
+   한 번에 많은 element를 가져와야 할 때 className을 사용 
+   hellos를 보면 배열 형태로 요소들을 볼 수 있음 */
+const hellos = document.getElementsByClassName("hello");
+console.log(hellos);
+document.get;
+
+/* getElementBy ~ ,를 통해 원하는 element를 골라서 가져오거나 변경 가능 
+   Id, ClassName, TagName 등, 추가로 querySelector, querySelectorAll도 있음
+   querySelector는 css처럼 element에 접근할 수 있음
+   HTML에서 class가 hello인 요소에 접근 css처럼 .className으로 사용, 태그도 가능 h1등
+   querySelector는 지정하는 방법이 동일한 요소 중 첫 번째 요소만 가져옴
+   querySelectorAll은 array 형태로 모두 접근할 수 있음
+   위 두 개를 주로 사용할 예정 */
+document.querySelector(".hello");
