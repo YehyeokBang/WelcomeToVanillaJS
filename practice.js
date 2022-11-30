@@ -275,3 +275,32 @@ document.get;
    querySelectorAll은 array 형태로 모두 접근할 수 있음
    위 두 개를 주로 사용할 예정 */
 document.querySelector(".hello");
+
+/* 그래서? 접근하면 그걸로 무엇을 할 수 있나?
+   많은 것을 할 수 있음, 일단 한 번 가져온 h1 태그의 색상을 바꿔보자
+   .hello로 가져오면, 3개가 넘어오는데, 그 중 첫 번째 요소가 선택
+   querySelectorAll을 사용하면 모두 적용 */
+const title = document.querySelector(".hello");
+title.style.color = "blue";
+
+/* event, 어떤 행위: 클릭, 입력 등 모든 이벤트는 js가 listen 가능
+   eventListener : event를 listen -> js에게 무슨 event를 listen 
+                                     하고 싶은지 알려줘야 함
+   title.addEventListener("click") : 누군가가 title을 click하는 것을 listen할 거임
+                                     -> 무언가를 해줘야함 
+   그럼 파란색으로 바뀐 h1 태그를 클릭하면 콘솔창에 click 되었다고 뜸 */
+function handleTitleClick() {
+  console.log("title was clicked!");
+}
+
+title.addEventListener("click", handleTitleClick);
+
+/* HTML Heading Element : js 관점의 HTML Element임
+   잘 검색해서 찾아볼 수 있음
+   mouseenter는 마우스를 올리면 반응
+   정리하면, js로 HTML의 element를 가져오고 가져온 element에 eventlistener를 추가하고
+   event가 발생하면 function이 실행되는 구조 */
+function handMouseEnter() {
+  console.log("title touch!");
+}
+title.addEventListener("mouseenter", handMouseEnter);
