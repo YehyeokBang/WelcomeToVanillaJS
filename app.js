@@ -1,5 +1,8 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+
+const HIDDEN_CLASSNAME = "hidden";
 
 /* submit 된다고 해서 그냥 실행되는 것이 아님. 실제로는 어떠한 argument를
    넣어주어야 실행됨. 그 argument에 정체는 바로 event에 대한 기본 정보들
@@ -10,8 +13,14 @@ function onLoginSubmit(event) {
   /* submit이 발생하면 기본적으로 브라우저는 페이지를 새로고침함 
      우리가 원하는 바는 아니기에 preventDefault()로 기본 동작을 막을 수 있음 */
   event.preventDefault();
+
+  /* loginForm은 css를 이용해 없애고 greeting을 보이게 함 */
+  loginForm.classList.add(HIDDEN_CLASSNAME);
   const username = loginInput.value;
-  console.log(username);
+  // localStorage에 key-value 형태로 저장 가능
+  localStorage.setItem("username", username);
+  greeting.innerText = "Hello " + username; // `Hello ${username}`(기호 조심) 같은 방법임
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 /* submit이 발생하면 onLoginSubmit()을 실행시킨다는 의미
